@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+// Function to calculate the gross pay
+float calculateGrossPay(float hoursWorked, float hourlyRate) {
+    return hoursWorked * hourlyRate;
+}
+
+// Function to calculate deductions
+float calculateDeductions(float grossPay, float deductionPercentage) {
+    return grossPay * (deductionPercentage / 100);
+}
+
+// Function to calculate net pay
+float calculateNetPay(float grossPay, float deductions) {
+    return grossPay - deductions;
+}
+
+int main() {
+    // Declare variables
+    char employeeName[100];
+    float hoursWorked, hourlyRate, deductionPercentage;
+    float grossPay, deductions, netPay;
+
+    // Input employee details
+    printf("Enter Employee Name: ");
+    fgets(employeeName, sizeof(employeeName), stdin);
+
+    printf("Enter number of hours worked: ");
+    scanf("%f", &hoursWorked);
+
+    printf("Enter hourly rate: ");
+    scanf("%f", &hourlyRate);
+
+    printf("Enter deduction percentage (e.g., 10 for 10%%): ");
+    scanf("%f", &deductionPercentage);
+
+    // Calculate gross pay
+    grossPay = calculateGrossPay(hoursWorked, hourlyRate);
+
+    // Calculate deductions
+    deductions = calculateDeductions(grossPay, deductionPercentage);
+
+    // Calculate net pay
+    netPay = calculateNetPay(grossPay, deductions);
+
+    // Display the results
+    printf("\nEmployee Payroll Information\n");
+    printf("===================================\n");
+    printf("Employee Name: %s", employeeName);
+    printf("Hours Worked: %.2f\n", hoursWorked);
+    printf("Hourly Rate: %.2f\n", hourlyRate);
+    printf("Gross Pay: %.2f\n", grossPay);
+    printf("Deductions (%.2f%%): %.2f\n", deductionPercentage, deductions);
+    printf("Net Pay: %.2f\n", netPay);
+
+    return 0;
+}
